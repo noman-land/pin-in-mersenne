@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "rust-substring"
+name = "pin-in-mersenne"
 version = "0.1.0"
