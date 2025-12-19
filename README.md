@@ -5,4 +5,9 @@ In No Such Thing As A Fish episode 98 from January 2016, James Harkin says that 
 I am trying to find out how many 6 digit pins satisfy this criteria.
 
 You can find the prime txt here: https://www.mersenne.org/primes/
+
 Direct link: https://www.mersenne.org/primes/digits/M74207281.zip
+
+## To run
+
+`cargo run`
