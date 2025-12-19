@@ -1,8 +1,10 @@
 use std::fs;
 use std::str::from_utf8;
 
+const PIN_LENGTH: usize = 6;
+const PIN_COUNT: u8 = 21;
+
 fn main() {
-    const PIN_LENGTH: usize = 6;
     let mut pins = vec![0u8; 1_000_000];
 
     fs::read_to_string("data/prime.txt")
@@ -22,6 +24,6 @@ fn main() {
 
     println!(
         "Count: {}",
-        pins.iter().filter(|count| **count == 21).count()
+        pins.iter().filter(|count| **count == PIN_COUNT).count()
     )
 }
