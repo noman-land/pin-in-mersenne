@@ -1,8 +1,8 @@
 use std::fs;
-use std::str::from_utf8;
+use std::str;
 
-const PIN_LENGTH: usize = 6;
-const PIN_COUNT: u8 = 21;
+static PIN_LENGTH: usize = 6;
+static PIN_COUNT: u8 = 21;
 
 fn main() {
     let mut pins = vec![0u8; 1_000_000];
@@ -15,7 +15,7 @@ fn main() {
         .windows(PIN_LENGTH)
         .enumerate()
         .for_each(|(_, window)| {
-            let pin = from_utf8(window)
+            let pin = str::from_utf8(window)
                 .expect("Couldn't convert to string")
                 .parse::<usize>()
                 .expect("Couldn't convert to usize");
