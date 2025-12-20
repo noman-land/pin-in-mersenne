@@ -3,22 +3,22 @@ use std::str;
 
 static PIN_LENGTH: usize = 6;
 static PIN_COUNT: u8 = 21;
+static PATH: &str = "data/prime.txt";
 
 fn main() {
     let mut pins = vec![0u8; 1_000_000];
 
-    fs::read_to_string("data/prime.txt")
-        .expect("Can't read file")
+    fs::read_to_string(PATH)
+        .expect("\nCouldn't read file\n\n")
         .bytes()
         .filter(|b| b.is_ascii_digit())
         .collect::<Vec<u8>>()
         .windows(PIN_LENGTH)
-        .enumerate()
-        .for_each(|(_, window)| {
+        .for_each(|window| {
             let pin = str::from_utf8(window)
-                .expect("Couldn't convert to string")
+                .expect("\nCouldn't convert to string\n\n")
                 .parse::<usize>()
-                .expect("Couldn't convert to usize");
+                .expect("\nCouldn't convert to usize\n\n");
             pins[pin] += 1;
         });
 
