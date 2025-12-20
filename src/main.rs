@@ -6,7 +6,7 @@ static PIN_COUNT: u8 = 21;
 static PATH: &str = "data/prime.txt";
 
 fn main() {
-    let mut pins = vec![0u8; 10_usize.pow(PIN_LENGTH as u32)];
+    let mut pins = vec![0u8; 10usize.pow(PIN_LENGTH as u32)];
 
     fs::read_to_string(PATH)
         .expect("\nCouldn't read file\n\n")
