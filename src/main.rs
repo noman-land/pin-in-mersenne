@@ -1,5 +1,6 @@
 use std::fs;
 use std::str;
+use std::time::Instant;
 
 // The path of the file we are searching through
 static PATH: &str = "data/M74207281.txt";
@@ -11,6 +12,9 @@ static PIN_COUNT: u8 = 21;
 static NUM_PINS: usize = 10usize.pow(PIN_LENGTH as u32);
 
 fn main() {
+    // Start measuring run time
+    let before = Instant::now();
+
     // Fill a vector with zeros
     // The indices are the pins and the values are the counts per pin
     let mut pins = vec![0u8; NUM_PINS];
@@ -42,8 +46,9 @@ fn main() {
         });
 
     println!(
-        "Count: {}",
+        "Count: {} (completed in {:.2?})",
         // Filter for all the pins that appear PIN_COUNT times
-        pins.iter().filter(|count| **count == PIN_COUNT).count()
+        pins.iter().filter(|count| **count == PIN_COUNT).count(),
+        before.elapsed()
     )
 }
