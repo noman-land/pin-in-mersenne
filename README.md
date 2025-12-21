@@ -11,3 +11,8 @@ Direct link: https://www.mersenne.org/primes/digits/M74207281.zip
 ## To run
 
 `cargo run`
+
+## To build release binary and run that (10x speed improvement)
+
+`cargo build --release`
+`./target/release/pin-in-mersenne`
