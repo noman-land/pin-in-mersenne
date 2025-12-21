@@ -2,7 +2,7 @@ use std::fs;
 use std::str;
 
 // The path of the file we are searching through
-static PATH: &str = "data/prime.txt";
+static PATH: &str = "data/M74207281.txt";
 // The length of the pin we are looking for
 static PIN_LENGTH: usize = 6;
 // Number of times the pin appears in the file
