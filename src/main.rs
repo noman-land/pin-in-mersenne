@@ -13,7 +13,7 @@ static NUM_PINS: usize = 10usize.pow(PIN_LENGTH as u32);
 
 fn main() {
     // Start measuring run time
-    let before = Instant::now();
+    let start = Instant::now();
 
     // Fill a vector with zeros
     // The indices are the pins and the values are the counts per pin
@@ -46,9 +46,11 @@ fn main() {
         });
 
     println!(
+        // Format the count and the time to 2 decimal places
         "Count: {} (completed in {:.2?})",
         // Filter for all the pins that appear PIN_COUNT times
         pins.iter().filter(|count| **count == PIN_COUNT).count(),
-        before.elapsed()
+        // Output elapsed time
+        start.elapsed()
     )
 }
