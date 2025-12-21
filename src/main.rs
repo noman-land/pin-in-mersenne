@@ -12,6 +12,7 @@ static NUM_PINS: usize = 10usize.pow(PIN_LENGTH as u32);
 
 fn main() {
     // Fill a vector with zeros
+    // The indices are the pins and the values are the counts per pin
     let mut pins = vec![0u8; NUM_PINS];
 
     // Open the file that contains the prime number
