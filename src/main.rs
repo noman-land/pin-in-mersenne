@@ -1,4 +1,6 @@
 use std::fs;
+use std::fs::OpenOptions;
+use std::io::Write;
 use std::str;
 use std::time::Instant;
 
@@ -45,11 +47,42 @@ fn main() {
             pins[pin] += 1;
         });
 
+    // Collect matching pin indices
+    let matching_pin_indices: Vec<usize> = pins
+        .iter()
+        .enumerate()
+        .filter_map(|(index, count)| {
+            if *count == PIN_COUNT {
+                Some(index)
+            } else {
+                None
+            }
+        })
+        .collect();
+
+    // Format pins as zero-padded strings
+    let formatted_pins: Vec<String> = matching_pin_indices
+        .iter()
+        .map(|pin| format!("{:0width$}", pin, width = PIN_LENGTH))
+        .collect();
+
+    // Write to file
+    let mut file = OpenOptions::new()
+        .create(true)
+        .write(true)
+        .truncate(true)
+        .open("pins.txt")
+        .expect("Failed to open pins.txt for writing");
+
+    for pin in &formatted_pins {
+        writeln!(file, "{}", pin).expect("Failed to write pin to file");
+    }
+
     println!(
         // Format the count and the time to 2 decimal places
         "Count: {} (completed in {:.2?})",
-        // Filter for all the pins that appear PIN_COUNT times
-        pins.iter().filter(|count| **count == PIN_COUNT).count(),
+        // Count of matching pins
+        formatted_pins.len(),
         // Output elapsed time
         start.elapsed()
     )
