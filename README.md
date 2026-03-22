@@ -4,7 +4,7 @@ In [No Such Thing As A Fish](https://www.nosuchthingasafish.com/) episode 98 fro
 
 This project aims to discover all the pins in the 49th Mersenne Prime that could possibly be James's PIN.
 
-The [final list](pins.txt) is 83,080 pins out of a possible 1,000,000 6 digit PINs.
+The [final list](pins.txt) is 83,080 out of a possible 1,000,000 6 digit PINs. One of these is his PIN.
 
 You can find the prime txt here: https://www.mersenne.org/primes/
 
