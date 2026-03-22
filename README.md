@@ -1,6 +1,6 @@
 # PIN In Mersenne
 
-In No Such Thing As A Fish episode 98 from January 2016, James Harkin says that the 49th Mersenne Prime, `2^74207281 - 1`, the `22,338,618` digit number, contains his 6 digit PIN 21 times.
+In [No Such Thing As A Fish](https://www.nosuchthingasafish.com/) episode 98 from January 2016, James Harkin says that the 49th Mersenne Prime, `2^74207281 - 1`, the `22,338,618` digit number, contains his 6 digit PIN 21 times.
 
 I am trying to find out how many 6 digit pins satisfy this criteria.
 
