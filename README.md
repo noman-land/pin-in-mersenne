@@ -18,7 +18,7 @@ cargo run
 
 ## To build release binary and run that
 
-10x speed improvement
+5x speed improvement
 
 ```bash
 cargo build --release
