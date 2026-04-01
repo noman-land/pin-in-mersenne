@@ -31,7 +31,7 @@ fn main() {
         .filter(|b| b.is_ascii_digit())
         // Collect the filtered bytes into a vector
         .collect::<Vec<u8>>()
-        // Split up into chunks the length of the pin (6 digits each)
+        // Split up into (overlapping) chunks the length of the pin (6 digits each)
         .windows(PIN_LENGTH)
         // For each 6-digit chunk, increment its count in the pins vector
         .for_each(|window| {
@@ -47,11 +47,13 @@ fn main() {
             pins[pin] += 1;
         });
 
+    // Find PINs that appear exactly 21 times
     let matching_pin_indices: Vec<usize> = pins
-        // Enumerate to get both index (PIN value) and count
+        // Iterate through the vector
         .iter()
+        // Enumerate to get both index (PIN value) and count
         .enumerate()
-        // Filter to keep only those with count == PIN_COUNT, map to just the index
+        // Filter to keep only those with count == 21, map to just the index
         .filter_map(|(index, count)| {
             if *count == PIN_COUNT {
                 Some(index) // Keep the PIN index
@@ -59,15 +61,16 @@ fn main() {
                 None // Skip this PIN
             }
         })
-        // Collect the matching indices into a vector
+        // Collect the matching indices back into a vector
         .collect();
 
     // Format each matching PIN as a zero-padded 6-digit string
     let formatted_pins: Vec<String> = matching_pin_indices
-        // Convert each PIN index to a zero-padded string
+        // Iterate through the vector
         .iter()
+        // Convert each PIN index to a zero-padded string
         .map(|pin| format!("{:0width$}", pin, width = PIN_LENGTH))
-        // Collect the formatted strings into a vector
+        // Collect the formatted strings back into a vector
         .collect();
 
     // Write the formatted PINs to a file in the current working directory
@@ -76,7 +79,7 @@ fn main() {
         .create(true)
         // Open for writing
         .write(true)
-        // Truncate the file to zero length if it exists
+        // Truncate the file to zero length if it already exists
         .truncate(true)
         // Open "pins.txt" in the current directory
         .open("pins.txt")
